@@ -104,9 +104,14 @@ def create_order(request):
     save_path = "C:\hcini\queue\HL7_in"
     file_name = ono
     complete_name = os.path.join(save_path,file_name+".txt")
-    f = open(complete_name, "w")
-    f.write("[MSH]"+"\n")
-    f.write("message_id=O01|"+message_id+"\n")
+    
+    temp = "[MSH]\n"
+    temp = temp + f"message_id=001|{message_id}\n"
+    temo = temp + f"message_dt={datetime.today().strptime(data[4]+data[5],'%Y%m%d%H%M%S')\n}"
+    
+    # f = open(complete_name, "w") # replace with code below
+    # f.write("[MSH]"+"\n")
+    # f.write("message_id=O01|"+message_id+"\n")
     f.write("message_dt="+datetime.today().strptime(data[4]+data[5],'%Y%m%d%H%M%S'"\n")
     f.write("receiving_application=HCLAB"+"\n")
     f.write("version=2.3"+"\n")
@@ -134,6 +139,9 @@ def create_order(request):
     f.write("dept="+dept_code+"\n")
     f.write("comment="+comment+"\n")
     f.close()
+            
+    with open(complete_name, "w") as f:
+        f.write(temp)
 
     # print(name)
     # print(sex)
