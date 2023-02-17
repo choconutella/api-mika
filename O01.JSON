@@ -1,0 +1,252 @@
+{
+  "ORM_O01": {
+    "MSH": {
+      "MSH.1": "|",
+      "MSH.2": "^~\\&amp;",
+      "MSH.3": {
+        "HD.1": "SAP"
+      },
+      "MSH.4": {
+        "HD.1": 1800,
+        "HD.2": "MITRA KELUARGA WARU"
+      },
+      "MSH.5": {
+        "HD.1": "HCLAB"
+      },
+      "MSH.6": {
+        "HD.1": "LIS"
+      },
+      "MSH.7": {
+        "TS.1": 20230117,
+        "TS.2": 140426
+      },
+      "MSH.9": {
+        "CM_MSG.1": "ORM",
+        "CM_MSG.2": "O01"
+      },
+      "MSH.10": 1016625599,
+      "MSH.11": {
+        "PT.1": "P"
+      },
+      "MSH.12": 2.3
+    },
+    "ORM_O01.PATIENT": {
+      "PID": {
+        "PID.3": {
+          "CX.1": 101230821
+        },
+        "PID.4": {
+          "CX.1": 3515187009890001
+        },
+        "PID.5": {
+          "XPN.2": "ERMA MAULIDIANA",
+          "XPN.4": "NY"
+        },
+        "PID.7": {
+          "TS.1": 19890930
+        },
+        "PID.8": 2,
+        "PID.11": {
+          "XAD.1": "JL MERAK TK/15",
+          "XAD.3": "SIDOARJO",
+          "XAD.4": "JAWA TIMUR",
+          "XAD.5": 61256,
+          "XAD.6": "ID"
+        },
+        "PID.13": {
+          "XTN.1": 82141849991,
+          "XTN.3": "PH"
+        }
+      },
+      "ORM_O01.PATIENT_VISIT": {
+        "PV1": {
+          "PV1.2": "O",
+          "PV1.3": {
+            "PL.1": "18KPUM00^Klinik Umum"
+          },
+          "PV1.7": {
+            "XCN.1": "HR80000398",
+            "XCN.2": "dr. Budiono Raharjo Sp.PK (K)."
+          },
+          "PV1.19": {
+            "CX.1": 180030626900002
+          },
+          "PV1.44": {
+            "TS.1": 20230117,
+            "TS.2": 134710
+          }
+        }
+      }
+    },
+    "ORM_O01.ORDER": [
+      {
+        "ORC": {
+          "ORC.1": "NW",
+          "ORC.2": {
+            "EI.1": 1042048856
+          },
+          "ORC.3": {
+            "EI.1": 1042048856
+          },
+          "ORC.4": {
+            "EI.1": 18001000392058000
+          },
+          "ORC.5": "RE",
+          "ORC.7": {
+            "TQ.1": {
+              "CQ.1": 1
+            }
+          },
+          "ORC.8": {
+            "CM_EIP.1": {
+              "EI.1": 1000392058
+            },
+            "CM_EIP.2": {
+              "EI.1": 1000392058
+            }
+          },
+          "ORC.9": {
+            "TS.1": 20230117,
+            "TS.2": 140426
+          },
+          "ORC.10": {
+            "XCN.1": "18PLAB00"
+          },
+          "ORC.12": {
+            "XCN.1": "HR20090631",
+            "XCN.2": "dr. Arwinda Tanti Mendriyani"
+          },
+          "ORC.13": {
+            "PL.1": "18KPUM00^Klinik Umum",
+            "PL.2": "18MPUM00^Dept.Poli Umum"
+          },
+          "ORC.14": "",
+          "ORC.17": {
+            "CE.1": 1800,
+            "CE.2": "MITRA KELUARGA WARU"
+          }
+        },
+        "ORM_O01.ORDER_DETAIL": {
+          "OBR": {
+            "OBR.1": 1,
+            "OBR.2": {
+              "EI.1": 1042048856
+            },
+            "OBR.3": {
+              "EI.1": 1042048856
+            },
+            "OBR.4": {
+              "CE.1": "LABA340600",
+              "CE.2": "WIDAL"
+            },
+            "OBR.6": {
+              "TS.1": 20230117,
+              "TS.2": 140426
+            },
+            "OBR.7": {
+              "TS.1": 20230117,
+              "TS.2": 134718
+            },
+            "OBR.13": "Observasi Febris",
+            "OBR.16": {
+              "XCN.1": "HR20090631",
+              "XCN.2": "dr. Arwinda Tanti Mendriyani"
+            },
+            "OBR.17": "",
+            "OBR.18": "18PLAB00^Laboratorium",
+            "OBR.19": "18NLAB00",
+            "OBR.27": {
+              "TQ.1": {
+                "CQ.1": 1
+              }
+            }
+          }
+        }
+      },
+      {
+        "ORC": {
+          "ORC.1": "NW",
+          "ORC.2": {
+            "EI.1": 1042048855
+          },
+          "ORC.3": {
+            "EI.1": 1042048855
+          },
+          "ORC.4": {
+            "EI.1": 18001000392058000
+          },
+          "ORC.5": "RE",
+          "ORC.7": {
+            "TQ.1": {
+              "CQ.1": 1
+            }
+          },
+          "ORC.8": {
+            "CM_EIP.1": {
+              "EI.1": 1000392058
+            },
+            "CM_EIP.2": {
+              "EI.1": 1000392058
+            }
+          },
+          "ORC.9": {
+            "TS.1": 20230117,
+            "TS.2": 140426
+          },
+          "ORC.10": {
+            "XCN.1": "18PLAB00"
+          },
+          "ORC.12": {
+            "XCN.1": "HR20090631",
+            "XCN.2": "dr. Arwinda Tanti Mendriyani"
+          },
+          "ORC.13": {
+            "PL.1": "18KPUM00^Klinik Umum",
+            "PL.2": "18MPUM00^Dept.Poli Umum"
+          },
+          "ORC.14": "",
+          "ORC.17": {
+            "CE.1": 1800,
+            "CE.2": "MITRA KELUARGA WARU"
+          }
+        },
+        "ORM_O01.ORDER_DETAIL": {
+          "OBR": {
+            "OBR.1": 1,
+            "OBR.2": {
+              "EI.1": 1042048855
+            },
+            "OBR.3": {
+              "EI.1": 1042048855
+            },
+            "OBR.4": {
+              "CE.1": "LABA100300",
+              "CE.2": "Darah Lengkap"
+            },
+            "OBR.6": {
+              "TS.1": 20230117,
+              "TS.2": 140426
+            },
+            "OBR.7": {
+              "TS.1": 20230117,
+              "TS.2": 134718
+            },
+            "OBR.13": "Observasi Febris",
+            "OBR.16": {
+              "XCN.1": "HR20090631",
+              "XCN.2": "dr. Arwinda Tanti Mendriyani"
+            },
+            "OBR.17": "",
+            "OBR.18": "18PLAB00^Laboratorium",
+            "OBR.19": "18NLAB00",
+            "OBR.27": {
+              "TQ.1": {
+                "CQ.1": 1
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}
