@@ -138,40 +138,6 @@ def create_order(request):
     f.close()
     
 
-    
-    # f.write("[MSH]"+"\n")
-    # f.write("message_id=O01|"+message_id+"\n")
-    # f.write("message_dt="+datetime.today().strptime(data[4]+data[5],'%Y%m%d%H%M%S'"\n")
-    # f.write("receiving_application=HCLAB"+"\n")
-    # f.write("version=2.3"+"\n")
-    # f.write("[OBR]"+"\n")
-    # f.write("order_control="+order_control+"\n")
-    # f.write("order_action=A"+"\n")
-    # f.write("visitno="+visitno+"\n")
-    # f.write("specialty="+specialty+"\n")
-    # f.write("site_id="+site_id+"\n")
-    # f.write("pid="+pid+"\n")
-    # f.write("apid="+apid+"\n")
-    # f.write("pname="+pname+", "+title+"\n")
-    # f.write("birth_dt="+dob+"\n")
-    # f.write("sex="+sex+"\n")
-    # f.write("address="+ADDR1+"^^"+ADDR2+"^"+ADDR3+"^"+ADDR4+"\n")
-    # f.write("ptype="+ptype+"\n")
-    # f.write("grp_ono="+grp_ono+"\n")
-    # f.write("source="+source_code+"^"+source_name+"\n")
-    # f.write("room_no="+room_no+"\n")
-    # f.write("request_dt="+request_dt+request_tm+"\n")
-    # f.write("ono="+ono+"\n") #need to loops
-    # f.write("lno="+lno+"\n")
-    # f.write("clinician="+clinician_code+"^"+clinician_name+"\n")
-    # f.write("order_testid="+order_testid+"\n") # need to loops
-    # f.write("dept="+dept_code+"\n")
-    # f.write("comment="+comment+"\n")
-    # f.close()
-
-    # print(name)
-    # print(sex)
-    # print(age)
 
     balikan ={
         "Status" : "Sukses Order",
