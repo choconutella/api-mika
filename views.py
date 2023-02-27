@@ -81,9 +81,10 @@ def create_order(request):
     clinician_code = data_order['ORM_O01.PATIENT_VISIT']['PV1']['PV1.7']['XCN.1']
     clinician_name = data_order['ORM_O01.PATIENT_VISIT']['PV1']['PV1.7']['XCN.2']
 
-    #need to loops
+    #need to loops and mapping with the Master ini
     ono = data_order['ORM_O01']['ORM_O01.ORDER']['ORM_O01.ORDER_DETAIL']['OBR']['OBR.2']['EI.1']
     order_testid  = data_order['ORM_O01']['ORM_O01.ORDER']['ORM_O01.ORDER_DETAIL']['OBR']['OBR.4']['CE.1']
+    order_control = data_order['ORM_O01']['ORM_O01.ORDER']['ORM_O01.ORDER_DETAIL']['OBR']['OBR.4']['CE.1']
 
     dept_code = data_order['ORM_O01']['ORM_O01.ORDER']['ORM_O01.ORDER_DETAIL']['OBR']['OBR.19']
     comment = data_order['ORM_O01']['ORM_O01.ORDER']['ORM_O01.ORDER_DETAIL']['OBR']['OBR.13']
@@ -104,36 +105,69 @@ def create_order(request):
     save_path = "C:\hcini\queue\HL7_in"
     file_name = ono
     complete_name = os.path.join(save_path,file_name+".txt")
+    o01 = "[MSH]"+"\n"
+    o01 = o01 + "message_id=O01|"+message_id+"\n"
+    o01 = o01 + "message_dt="+datetime.today().strptime(data[4]+data[5],'%Y%m%d%H%M%S')+"\n"
+    o01 = o01 + "receiving_application=HCLAB"+"\n"
+    o01 = o01 + "version=2.3"+"\n"
+    o01 = o01 + "[OBR]"+"\n"
+    o01 = o01 + "order_control="+order_control+"\n"
+    o01 = o01 + "order_action=A"+"\n"
+    o01 = o01 + "visitno="+visitno+"\n"
+    o01 = o01 + "specialty="+specialty+"\n"
+    o01 = o01 + "site_id="+site_id+"\n"
+    o01 = o01 + "pid="+pid+"\n"
+    o01 = o01 + "apid="+apid+"\n"
+    o01 = o01 + "pname="+pname+", "+title+"\n"
+    o01 = o01 + "birth_dt="+dob+"\n"
+    o01 = o01 + "sex="+sex+"\n"
+    o01 = o01 + "address="+ADDR1+"^^"+ADDR2+"^"+ADDR3+"^"+ADDR4+"\n"
+    o01 = o01 + "ptype="+ptype+"\n"
+    o01 = o01 + "grp_ono="+grp_ono+"\n"
+    o01 = o01 + "source="+source_code+"^"+source_name+"\n"
+    o01 = o01 + "room_no="+room_no+"\n"
+    o01 = o01 + "request_dt="+request_dt+request_tm+"\n"
+    o01 = o01 + "ono="+ono+"\n"
+    o01 = o01 + "lno="+lno+"\n"
+    o01 = o01 + "clinician="+clinician_code+"^"+clinician_name+"\n"
+    o01 = o01 + "order_testid="+order_testid+"\n"
+    o01 = o01 + "dept="+dept_code+"\n"
+    o01 = o01 + "comment="+comment+"\n"
     f = open(complete_name, "w")
-    f.write("[MSH]"+"\n")
-    f.write("message_id=O01|"+message_id+"\n")
-    f.write("message_dt="+datetime.today().strptime(data[4]+data[5],'%Y%m%d%H%M%S'"\n")
-    f.write("receiving_application=HCLAB"+"\n")
-    f.write("version=2.3"+"\n")
-    f.write("[OBR]"+"\n")
-    f.write("order_control="+order_control+"\n")
-    f.write("order_action=A"+"\n")
-    f.write("visitno="+visitno+"\n")
-    f.write("specialty="+specialty+"\n")
-    f.write("site_id="+site_id+"\n")
-    f.write("pid="+pid+"\n")
-    f.write("apid="+apid+"\n")
-    f.write("pname="+pname+", "+title+"\n")
-    f.write("birth_dt="+dob+"\n")
-    f.write("sex="+sex+"\n")
-    f.write("address="+ADDR1+"^^"+ADDR2+"^"+ADDR3+"^"+ADDR4+"\n")
-    f.write("ptype="+ptype+"\n")
-    f.write("grp_ono="+grp_ono+"\n")
-    f.write("source="+source_code+"^"+source_name+"\n")
-    f.write("room_no="+room_no+"\n")
-    f.write("request_dt="+request_dt+request_tm+"\n")
-    f.write("ono="+ono+"\n") #need to loops
-    f.write("lno="+lno+"\n")
-    f.write("clinician="+clinician_code+"^"+clinician_name+"\n")
-    f.write("order_testid="+order_testid+"\n") # need to loops
-    f.write("dept="+dept_code+"\n")
-    f.write("comment="+comment+"\n")
+    f.write(o01)
     f.close()
+    
+
+    
+    # f.write("[MSH]"+"\n")
+    # f.write("message_id=O01|"+message_id+"\n")
+    # f.write("message_dt="+datetime.today().strptime(data[4]+data[5],'%Y%m%d%H%M%S'"\n")
+    # f.write("receiving_application=HCLAB"+"\n")
+    # f.write("version=2.3"+"\n")
+    # f.write("[OBR]"+"\n")
+    # f.write("order_control="+order_control+"\n")
+    # f.write("order_action=A"+"\n")
+    # f.write("visitno="+visitno+"\n")
+    # f.write("specialty="+specialty+"\n")
+    # f.write("site_id="+site_id+"\n")
+    # f.write("pid="+pid+"\n")
+    # f.write("apid="+apid+"\n")
+    # f.write("pname="+pname+", "+title+"\n")
+    # f.write("birth_dt="+dob+"\n")
+    # f.write("sex="+sex+"\n")
+    # f.write("address="+ADDR1+"^^"+ADDR2+"^"+ADDR3+"^"+ADDR4+"\n")
+    # f.write("ptype="+ptype+"\n")
+    # f.write("grp_ono="+grp_ono+"\n")
+    # f.write("source="+source_code+"^"+source_name+"\n")
+    # f.write("room_no="+room_no+"\n")
+    # f.write("request_dt="+request_dt+request_tm+"\n")
+    # f.write("ono="+ono+"\n") #need to loops
+    # f.write("lno="+lno+"\n")
+    # f.write("clinician="+clinician_code+"^"+clinician_name+"\n")
+    # f.write("order_testid="+order_testid+"\n") # need to loops
+    # f.write("dept="+dept_code+"\n")
+    # f.write("comment="+comment+"\n")
+    # f.close()
 
     # print(name)
     # print(sex)
