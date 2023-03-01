@@ -1,16 +1,12 @@
+from fileinput import close
+from datetime import datetime
+import os.path
 import json
 from pprint import pprint
 from configparser import ConfigParser
 
 # function for mapping
 def mapping_order(test_item):
-    # config = ConfigParser.RawConfigParser()
-    # config.read('MASTER.ini')
-    # counter = 1
-    # while "order"+str(counter) in config["order"]:
-    #     content = config["order"]["order"+str(counter)]
-    #     pprint(content)
-    #     counter +=1
     with open('MASTER.ini','r') as g:
         mapping_order = g.readlines()
         for line in mapping_order:
@@ -20,14 +16,8 @@ def mapping_order(test_item):
                 #print (order2[2])
     return order2[2]
            
-    
-  
-
 def parse_o01(data_order):
     #code_hclab = mapping()
-
-   
-
     msh = data_order['ORM_O01']['MSH']
     pv1 = data_order['ORM_O01']['ORM_O01.PATIENT']['ORM_O01.PATIENT_VISIT']['PV1']
     pid = data_order['ORM_O01']['ORM_O01.PATIENT']['PID']
@@ -55,8 +45,8 @@ def parse_o01(data_order):
     lno =''
     clinician_code = pv1['PV1.7']['XCN.1']
     clinician_name = pv1['PV1.7']['XCN.2']
-    
 
+    #looping for order of Test)item and ono
     for order in data_order['ORM_O01']['ORM_O01.ORDER']:
         order_control = order['ORC']['ORC.1']
         visitno = str(order['ORC']['ORC.4']['EI.1'])
@@ -68,6 +58,7 @@ def parse_o01(data_order):
         dept_code = order['ORM_O01.ORDER_DETAIL']['OBR']['OBR.19']
         comment = order['ORM_O01.ORDER_DETAIL']['OBR']['OBR.13']
 
+        #Add O01 Message
         o01 = "[MSH]"+"\n"
         o01 = o01 + "message_id=O01|"+ message_id +"\n"
         o01 = o01 + "message_dt="+ message_dt + message_tm+"\n"
@@ -93,10 +84,16 @@ def parse_o01(data_order):
         o01 = o01 + "ono="+ono+"\n"
         o01 = o01 + "lno="+lno+"\n"
         o01 = o01 + "clinician="+clinician_code+"^"+clinician_name+"\n"
-        o01 = o01 + "order_testid="+mapped_item+"\n"
+        o01 = o01 + "order_testid="+mapped_item+""
         o01 = o01 + "dept="+dept_code+"\n"
         o01 = o01 + "comment="+comment+"\n"
         pprint(o01)
+        save_path = "C:\hcini\queue\HL7_in"
+        file_name = ono
+        complete_name = os.path.join(save_path,file_name+".txt")
+        f = open(complete_name, "w")
+        f.write(o01)
+        f.close()
         
 
 print(mapping_order('LABA310000'))
