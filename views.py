@@ -137,6 +137,7 @@ def create_order(request):
     f.write(o01)
     f.close()
     
+    print(o01)
 
 
     balikan ={

@@ -1,16 +1,32 @@
 import json
 from pprint import pprint
+from configparser import ConfigParser
 
 # function for mapping
-def mapping(code):
-    pass
+def mapping_order(test_item):
+    # config = ConfigParser.RawConfigParser()
+    # config.read('MASTER.ini')
+    # counter = 1
+    # while "order"+str(counter) in config["order"]:
+    #     content = config["order"]["order"+str(counter)]
+    #     pprint(content)
+    #     counter +=1
+    with open('MASTER.ini','r') as g:
+        mapping_order = g.readlines()
+        for line in mapping_order:
+            if test_item in line and 'order' in line:
+                order = line.split("=")
+                order2 = order[1].split(",")
+                #print (order2[2])
+    return order2[2]
+           
+    
+  
 
-
-def parse_o01(data_json):
+def parse_o01(data_order):
     #code_hclab = mapping()
 
-    with open('O01.JSON','r') as f:
-        data_order = json.load(f)
+   
 
     msh = data_order['ORM_O01']['MSH']
     pv1 = data_order['ORM_O01']['ORM_O01.PATIENT']['ORM_O01.PATIENT_VISIT']['PV1']
@@ -45,6 +61,7 @@ def parse_o01(data_json):
         order_control = order['ORC']['ORC.1']
         visitno = str(order['ORC']['ORC.4']['EI.1'])
         test_item = order['ORM_O01.ORDER_DETAIL']['OBR']['OBR.4']['CE.1']
+        mapped_item = mapping_order(test_item)
         request_dt = str(order['ORM_O01.ORDER_DETAIL']['OBR']['OBR.7']['TS.1'])
         request_tm = str(order['ORM_O01.ORDER_DETAIL']['OBR']['OBR.7']['TS.2'])
         ono = str (order['ORM_O01.ORDER_DETAIL']['OBR']['OBR.2']['EI.1'])
@@ -76,10 +93,15 @@ def parse_o01(data_json):
         o01 = o01 + "ono="+ono+"\n"
         o01 = o01 + "lno="+lno+"\n"
         o01 = o01 + "clinician="+clinician_code+"^"+clinician_name+"\n"
-        o01 = o01 + "order_testid="+test_item+"\n"
+        o01 = o01 + "order_testid="+mapped_item+"\n"
         o01 = o01 + "dept="+dept_code+"\n"
         o01 = o01 + "comment="+comment+"\n"
         pprint(o01)
         
 
-print(mapping('L0001'))
+print(mapping_order('LABA310000'))
+
+with open('O01.JSON','r') as f:
+    data_order = json.load(f)
+
+print(parse_o01(data_order))
